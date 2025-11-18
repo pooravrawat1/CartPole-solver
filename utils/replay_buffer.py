@@ -10,4 +10,17 @@ class ReplayBuffer:
         """
         self.buffer = deque(maxlen=capacity)
     
+    def push(self, state, sction, reward, next_state, done):
+            """
+        Store a transition in the replay buffer.
+        
+        Args:
+            state: Current state
+            action: Action taken
+            reward: Reward received
+            next_state: Next state after action
+            done: Whether episode ended (True/False)
+        """
+        self.buffer.append(state, action, reward, next_state, done)
     
+

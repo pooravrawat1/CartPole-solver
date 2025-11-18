@@ -39,4 +39,8 @@ Example:
 Input: [cart position: 0.5, cart speed: 0.2, pole angle: 0.1, pole speed: -0.3]
 Output: [Left: 2.3, Right: 4.7]
 Decision: Pick RIGHT because 4.7 > 2.3
-That's it. The forward pass is the actual "thinking" that happens every time the agent needs to make a decision. Without it, the network is just a blueprint - the forward pass is what brings it to life.
+
+Wrote a replay buffer function in utils/reply_buffer.py which stores past experiments in a deque, so AI can learn from them.
+
+Added a push method to store transitions
+A transition is one moment of gameplay captured as: "I was in this state, took this action, got this reward, and ended up in this new state."
