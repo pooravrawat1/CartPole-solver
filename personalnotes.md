@@ -21,7 +21,6 @@ The agent picks the action with the highest score
 Why it matters: Instead of random moves, this network learns from experience which actions lead to keeping the pole balanced. Over time, it gets better at predicting "if I move left now, I'll probably keep the pole up longer" vs "if I move right, the pole will fall."
 
 The forward pass is literally how the brain thinks.
-
 In the simplest terms:
 
 You give it the current situation (pole angle, cart position, etc.) and it spits out two numbers:
@@ -44,3 +43,6 @@ Wrote a replay buffer function in utils/reply_buffer.py which stores past experi
 
 Added a push method to store transitions
 A transition is one moment of gameplay captured as: "I was in this state, took this action, got this reward, and ended up in this new state."
+
+Added a sample method for batch retieval. 
+Instead of learning from experiences one at a time, the AI learns from a random batch (like 32 experiences at once). This method grabs a random sample of past experiences for training.

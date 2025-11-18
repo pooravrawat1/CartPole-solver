@@ -1,4 +1,6 @@
 from collections import deque
+import random
+import torch
 
 class ReplayBuffer:
     def __init__(self, capacity):
@@ -22,5 +24,26 @@ class ReplayBuffer:
             done: Whether episode ended (True/False)
         """
         self.buffer.append(state, action, reward, next_state, done)
+
+    def sample(self, batch_size):
+            """
+        Randomly sample a batch of transitions from the buffer.
+        
+        Args:
+            batch_size: Number of transitions to sample
+            
+        Returns:
+            Tuple of tensors: (states, actions, rewards, next_states, dones)
+        """
+        transitions = random.sample(self.buffer, batch size)
+
+        states, actions, rewards, next_states, dones = zip(*transitions)
+
+        states = torch.FloatTensor(states)
+        actions = torch.LongTensor(actions)
+        rewards = torch.FloatTensor(rewards)
+        next_states = torch.FloatTensor(next_states)
+        dones = torch.FloatTensor(dones)
+
     
 
