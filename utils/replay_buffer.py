@@ -44,6 +44,15 @@ class ReplayBuffer:
         rewards = torch.FloatTensor(rewards)
         next_states = torch.FloatTensor(next_states)
         dones = torch.FloatTensor(dones)
-
     
+    def __len__(self):
+        """
+        Return the current number of transitions in the buffer.
+    
+        Returns:
+         Number of stored transitions
+        """   
+        return len(self.buffer)
+        
+
 
