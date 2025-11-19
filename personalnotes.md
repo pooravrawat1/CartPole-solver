@@ -9,7 +9,7 @@ Reward is defined by human.
 ![alt text](image.png)
 
 
-Started with making a Qnetwork class
+# Started with making a Qnetwork class
 The QNetwork class is the "brain" of the AI agent. It is a neural network that learns to predict how good each action is in any given situation.
 
 How it works:
@@ -39,6 +39,7 @@ Input: [cart position: 0.5, cart speed: 0.2, pole angle: 0.1, pole speed: -0.3]
 Output: [Left: 2.3, Right: 4.7]
 Decision: Pick RIGHT because 4.7 > 2.3
 
+# Replay buffer
 Wrote a replay buffer function in utils/reply_buffer.py which stores past experiments in a deque, so AI can learn from them.
 
 Added a push method to store transitions
@@ -46,3 +47,36 @@ A transition is one moment of gameplay captured as: "I was in this state, took t
 
 Added a sample method for batch retieval. 
 Instead of learning from experiences one at a time, the AI learns from a random batch (like 32 experiences at once). This method grabs a random sample of past experiences for training.
+
+# DQN Agent setup
+Setting up two neural networks (Q-network and Target Network), both identical. The Target Network provides stable learning targets while the Q-Network learns. Without it, learning is unstable.
+
+
+# Hyperparameters
+Epsilon controls exploration → agent tries different things
+Replay buffer stores those experiences → agent remembers what happened
+Learning rate controls how fast it learns → agent updates its brain
+Gamma determines planning horizon → agent thinks about long-term consequences
+Epsilon decay shifts from exploring to exploiting → agent gets smarter over time
+
+# epsilon greedy approach
+Epsilon-greedy is a simple but powerful strategy that balances exploration vs exploitation:
+
+Generate a random number between 0 and 1
+Compare it to epsilon:
+If random number < epsilon → Explore (pick random action)
+If random number ≥ epsilon → Exploit (pick best action from network)
+
+Example:
+
+Epsilon = 0.8 (80% exploration)
+Random number = 0.65
+0.65 < 0.8 → Pick random action
+Why this works:
+
+Early training: epsilon = 1.0 → always explore (learn about the environment)
+Late training: epsilon = 0.05 → mostly exploit (use what you learned)
+Always keeps a little randomness to avoid getting stuck
+
+# store transition
+This is a simple wrapper method that saves an experience (transition) to the replay buffer. After the agent takes an action in the game, we need to remember what happened so we can learn from it later.
