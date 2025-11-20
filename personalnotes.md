@@ -80,3 +80,9 @@ Always keeps a little randomness to avoid getting stuck
 
 # store transition
 This is a simple wrapper method that saves an experience (transition) to the replay buffer. After the agent takes an action in the game, we need to remember what happened so we can learn from it later.
+
+# bellman equation
+rewards + self.gamma * next_q_values * (1 - dones)
+
+# epsilon decay
+we decay the epsilon as we move forward to have less exploration and more exploitation (working on experience alreayd gathered)
