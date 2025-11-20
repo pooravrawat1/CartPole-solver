@@ -86,3 +86,11 @@ rewards + self.gamma * next_q_values * (1 - dones)
 
 # epsilon decay
 we decay the epsilon as we move forward to have less exploration and more exploitation (working on experience alreayd gathered)
+
+# Performance tracking
+CartPole is considered "solved" when you average 195+ reward over 100 consecutive episodes. The deque automatically keeps only the last 100, making this calculation easy.
+
+After each episode (one full game of CartPole), you need to record how well the agent did. This method saves that score in two places:
+
+reward_window - The rolling window (last 100 episodes only)
+all_rewards - The complete history (every episode ever)
