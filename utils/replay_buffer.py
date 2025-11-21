@@ -12,8 +12,8 @@ class ReplayBuffer:
         """
         self.buffer = deque(maxlen=capacity)
     
-    def push(self, state, sction, reward, next_state, done):
-            """
+    def push(self, state, action, reward, next_state, done):
+        """
         Store a transition in the replay buffer.
         
         Args:
@@ -23,10 +23,10 @@ class ReplayBuffer:
             next_state: Next state after action
             done: Whether episode ended (True/False)
         """
-        self.buffer.append(state, action, reward, next_state, done)
+        self.buffer.append((state, action, reward, next_state, done))
 
     def sample(self, batch_size):
-            """
+        """
         Randomly sample a batch of transitions from the buffer.
         
         Args:
@@ -35,7 +35,7 @@ class ReplayBuffer:
         Returns:
             Tuple of tensors: (states, actions, rewards, next_states, dones)
         """
-        transitions = random.sample(self.buffer, batch size)
+        transitions = random.sample(self.buffer, batch_size)
 
         states, actions, rewards, next_states, dones = zip(*transitions)
 
@@ -44,6 +44,8 @@ class ReplayBuffer:
         rewards = torch.FloatTensor(rewards)
         next_states = torch.FloatTensor(next_states)
         dones = torch.FloatTensor(dones)
+        
+        return states, actions, rewards, next_states, dones
     
     def __len__(self):
         """
