@@ -43,5 +43,5 @@ def train(agent, env, num_episodes=500):
             print(f"\nEnvironment solved in {episode + 1} episodes!")
             print(f"Average reward: {tracker.get_average_reward():.2f}")
             break
-            
-        
+    
+    return tracker

@@ -94,3 +94,8 @@ After each episode (one full game of CartPole), you need to record how well the 
 
 reward_window - The rolling window (last 100 episodes only)
 all_rewards - The complete history (every episode ever)
+
+# Creating training loop
+Takes in the agent, environment, and number of episodes to train
+Creates a PerformanceTracker to monitor progress
+Sets up a loop that runs for the specified number of episodes
