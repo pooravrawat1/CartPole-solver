@@ -18,7 +18,8 @@ def train(agent, env, num_episodes=500):
         
         while not done:
             action = agent.select_action(state)
-            next_state, reward, done, info = env.step(action)
+            next_state, reward, terminated, truncated, info = env.step(action)
+            done = terminated or truncated
             agent.store_transition(state, action, reward, next_state, done)
             episode_reward += reward
             
