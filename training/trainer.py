@@ -12,7 +12,7 @@ def train(agent, env, num_episodes=500):
     tracker = PerformanceTracker()
     
     for episode in range(num_episodes):
-        state = env.reset()
+        state, info = env.reset()
         episode_reward = 0
         done = False
         

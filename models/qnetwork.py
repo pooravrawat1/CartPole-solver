@@ -42,20 +42,20 @@ class QNetwork(nn.Module):
         return self.fc3(x)
 
     def save(self, filepath):
-         """
-    Save the model's state dictionary to a file.
-    
-    Args:
-        filepath: Path where the model will be saved
-    """
-        torch.save(self.state_dict(),filepath)
-    
-    def load(self,filepath):
         """
-    Load the model's state dictionary from a file.
+        Save the model's state dictionary to a file.
+        
+        Args:
+            filepath: Path where the model will be saved
+        """
+        torch.save(self.state_dict(), filepath)
     
-    Args:
-        filepath: Path to the saved model file
-    """
+    def load(self, filepath):
+        """
+        Load the model's state dictionary from a file.
+        
+        Args:
+            filepath: Path to the saved model file
+        """
         self.load_state_dict(torch.load(filepath))
         self.eval()
