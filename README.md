@@ -146,19 +146,6 @@ This project provided hands-on experience with:
 - Target network stabilization techniques
 - Hyperparameter tuning and debugging RL agents
 
-## Contributing
-
-Contributions, issues, and feature requests are welcome. Feel free to check the issues page if you want to contribute.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## References
-
-- Mnih, V., et al. (2013). [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)
-- OpenAI Gymnasium Documentation
-- Sutton, R. S., & Barto, A. G. (2018). Reinforcement Learning: An Introduction
 
 ---
 
